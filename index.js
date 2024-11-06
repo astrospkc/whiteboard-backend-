@@ -4,8 +4,12 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 
 const app = express();
+const isDev = app.settings.env === "development";
+
 // const isDev = app.settings.env === "development";
-const URL = "http://localhost:3000";
+const URL = isDev
+  ? "http://localhost:3000"
+  : "https://whiteboard-vert-ten.vercel.app";
 
 app.use(cors({ origin: URL }));
 
